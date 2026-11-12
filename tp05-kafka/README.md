@@ -6,16 +6,16 @@
 
 ```
 tp05-kafka/
-├── compose.yaml          # Kafka (KRaft) عبر Docker Compose
-├── requirements.txt      # kafka-python==2.0.2
-├── producer.py           # المنتِج (30 حدث)
-├── consumer.py           # المستهلك + تنبيه الحرارة >= 35
-├── extras/               # حلول "Tasks for Further Investigation"
-│   ├── producer_extended.py   # N حدث + campus_building
-│   ├── consumer_avg.py        # المتوسط المتحرك + group_id مختلف
-│   ├── consumer_csv.py        # فلترة مبنى + حفظ CSV
-│   └── commands.sh            # أوامر فحص Kafka
-├── screenshots/          # لقطات الشاشة (الدليل)
+├── compose.yaml         
+├── requirements.txt      
+├── producer.py          
+├── consumer.py         
+├── extras/               
+│   ├── producer_extended.py   
+│   ├── consumer_avg.py      
+│   ├── consumer_csv.py        
+│   └── commands.sh            
+├── screenshots/          
 └── README.md
 ```
 
@@ -29,7 +29,7 @@ docker compose logs --tail=50 kafka
 
 # 2) بيئة بايثون
 python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\Activate.ps1
+source .venv/bin/activate        
 python -m pip install -r requirements.txt
 
 # 3) إنشاء الـ topic يدويًا (3 partitions)
@@ -46,8 +46,8 @@ docker exec -it tp05-kafka /opt/kafka/bin/kafka-topics.sh --bootstrap-server loc
 docker exec -it tp05-kafka /opt/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
 
 # 7) التنظيف
-docker compose down        # إيقاف فقط
-docker compose down -v     # + حذف البيانات
+docker compose down       
+docker compose down -v   
 ```
 
 > ملاحظة: في نص التمرين تظهر `campussensors` في أمر `--describe` بسبب انقسام السطر في الـ PDF، والاسم الصحيح هو `campus-sensors`.
